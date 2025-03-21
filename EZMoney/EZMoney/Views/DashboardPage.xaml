@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EZMoney.Pages.DashboardPage"
+             xmlns:local="clr-namespace:EZMoney.ViewModels"
+             Title="EZMoney">
+
+    <ContentPage.BindingContext>
+        <local:DashboardViewModel />
+    </ContentPage.BindingContext>
+
+    <!--<StackLayout Padding="10">
+        <Button Text="Agregar Gasto" Command="{Binding AddExpenseCommand}"/>
+
+        <ListView x:Name="ExpensesList" ItemsSource="{Binding Expenses}" SelectedItem="{Binding SelectedExpense, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Execute">
+                                <SwipeItem Text="Eliminar" BackgroundColor="Red" 
+    Command="{Binding BindingContext.DeleteExpenseCommand, Source={x:Reference ExpensesList}}" 
+    CommandParameter="{Binding}" />
+
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <SwipeView.LeftItems>
+                            <SwipeItems Mode="Execute">
+                                <SwipeItem Text="Editar" BackgroundColor="Orange" 
+                Command="{Binding BindingContext.EditExpenseCommand, Source={x:Reference ExpensesList}}" 
+                CommandParameter="{Binding}" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+
+                        <StackLayout Padding="5">
+                            <Label Text="{Binding Category}" FontSize="20" FontAttributes="Bold"/>
+                            <Label Text="{Binding Description}" FontSize="14"/>
+                            <Label Text="{Binding Amount, StringFormat='Monto: {0:C}'}" FontSize="16"/>
+                        </StackLayout>
+                    </SwipeView>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <xct:EventToCommandBehavior EventName="ItemTapped" 
+            Command="{Binding ShowExpenseCommand}" CommandParameter="{Binding .}" />
+            </ListView.Behaviors>
+        </ListView>
+
+    </StackLayout>-->
+    <StackLayout Padding="10">
+        <Button Text="Agregar Gasto" Command="{Binding AddExpenseCommand}"/>
+
+        <ListView ItemsSource="{Binding Expenses}" SelectedItem="{Binding SelectedExpense, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="5">
+                            <Label Text="{Binding Category}" FontSize="20" FontAttributes="Bold"/>
+                            <Label Text="{Binding Description}" FontSize="14"/>
+                            <Label Text="{Binding Amount, StringFormat='Monto: {0:C}'}" FontSize="16"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <!--<ListView.Behaviors>
+                <xct:EventToCommandBehavior EventName="ItemTapped" 
+                                            Command="{Binding ShowExpenseCommand}" 
+                                            CommandParameter="{Binding .}" />
+            </ListView.Behaviors>-->
+        </ListView>
+    </StackLayout>
+</ContentPage>

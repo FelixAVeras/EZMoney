@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EZMoney.ViewModels"
+             x:Class="EZMoney.Pages.AddExpensePage"
+             Title="Agregar Gasto">
+
+    <ContentPage.BindingContext>
+        <local:AddExpenseViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="20" Spacing="15">
+
+        <Entry Placeholder="Categoría" Text="{Binding Category}" />
+        <Entry Placeholder="Descripción (Opcional)" Text="{Binding Description}" />
+        <Entry Placeholder="Monto" Keyboard="Numeric" Text="{Binding Amount}" />
+        <DatePicker Date="{Binding Date}" />
+
+        <Button Text="Guardar" Command="{Binding SaveCommand}" BackgroundColor="Green" TextColor="White"/>
+
+    </StackLayout>
+</ContentPage>
