@@ -18,25 +18,25 @@ namespace EZMoney.ViewModels
         public string Category
         {
             get => _category;
-            set => SetProperty(ref _category, value);
+            set => SetValue(ref _category, value);
         }
 
         public string Description
         {
             get => _description;
-            set => SetProperty(ref _description, value);
+            set => SetValue(ref _description, value);
         }
 
         public decimal Amount
         {
             get => _amount;
-            set => SetProperty(ref _amount, value);
+            set => SetValue(ref _amount, value);
         }
 
         public DateTime Date
         {
             get => _date;
-            set => SetProperty(ref _date, value);
+            set => SetValue(ref _date, value);
         }
 
         public ICommand SaveCommand { get; }

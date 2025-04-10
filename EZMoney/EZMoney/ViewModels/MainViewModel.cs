@@ -9,12 +9,13 @@ namespace EZMoney.ViewModels
         private static MainViewModel instance;
 
         public LoginViewModel Login { get; set; }
+        public DashboardViewModel Dashboard { get; set; }
 
         public MainViewModel()
         {
             instance = this;
 
-            this.Login = LoginViewModel();
+            this.Login = new LoginViewModel();
         }
 
         public static MainViewModel GetInstance()
@@ -26,5 +27,7 @@ namespace EZMoney.ViewModels
 
             return instance;
         }
+
+
     }
 }

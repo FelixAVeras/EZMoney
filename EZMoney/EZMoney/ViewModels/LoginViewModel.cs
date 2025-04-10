@@ -20,32 +20,32 @@ namespace EZMoney.ViewModels
 
         public string Email
         {
-            get { return this.email; }
-            set { SetValue(ref this.email, value); }
+            get => email;
+            set => SetValue(ref this.email, value);
         }
 
         public string Password
         {
-            get { return this.password; }
-            set { SetValue(ref this.password, value); }
+            get => password;
+            set => SetValue(ref this.password, value);
         }
 
         public bool IsRunning
         {
-            get { return this.isRunning; }
-            set { SetValue(ref this.isRunning, value); }
+            get => isRunning;
+            set => SetValue(ref this.isRunning, value);
         }
 
         public bool IsRemembered
         {
-            get;
-            set;
+            get => isRemember;
+            set => SetValue(ref isRemember, value);
         }
 
         public bool IsEnabled
         {
-            get { return this.isEnabled; }
-            set { SetValue(ref this.isEnabled, value); }
+            get => isEnabled;
+            set => SetValue(ref this.isEnabled, value);
         }
 
         public LoginViewModel()
@@ -59,31 +59,25 @@ namespace EZMoney.ViewModels
             this.Password = "123456";
         }
 
-        public ICommand LoginCommand
-        {
-            get
-            {
-                return new RelayCommand(Login);
-            }
-        }
+        public ICommand LoginCommand => new RelayCommand(Login);
 
         private async void Login()
         {
             if (string.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.EmailValidation,
-                    Languages.Accept);
+                    "Error",
+                    "El correo electronico ingresado no es correcto. Intente de nuevo",
+                    "Aceptar");
                 return;
             }
 
             if (string.IsNullOrEmpty(this.Password))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    Languages.PasswordValidation,
-                    Languages.Accept);
+                    "Error",
+                    "La contraseña ingresada no es valida. Intente de nuevo",
+                    "Aceptar");
                 return;
             }
 
@@ -97,9 +91,9 @@ namespace EZMoney.ViewModels
                 this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
+                    "Error",
                     connection.Message,
-                    Languages.Accept);
+                    "Aceptar");
                 return;
             }
 
@@ -131,10 +125,10 @@ namespace EZMoney.ViewModels
             //    return;
             //}
 
-            var mainViewModel = MainViewModel.GetInstance();
+            MainViewModel.GetInstance().Dashboard = new DashboardViewModel();
             //mainViewModel.Token = token;
             //mainViewModel.Lands = new LandsViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new DashboardPage());
+            Application.Current.MainPage = new MasterPage();
 
             this.IsRunning = false;
             this.IsEnabled = true;
